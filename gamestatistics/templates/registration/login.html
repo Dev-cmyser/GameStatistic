@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+{% if form.errors %}
+<div class="alert-danger">
+    <p class="p-1">неправильный логин или пароль</p>
+
+
+</div>
+{% endif %}
+
+{% if user.is_authenticated %}
+<div class="container1">
+    <div class="double">
+        <div class="title">
+            <p class="title">You alredy is_authenticated </p>
+
+        </div>
+        <div class="forma">
+            <a class="btn btn-primary" href="{% url 'logout' %}"> LOGOUT</a>
+
+        </div>
+    </div>
+
+
+</div>
+{% else %}
+<div class="container1">
+    <div class="double">
+        <div class="title">
+            <h1>Вход</h1>
+        </div>
+        <div class="forma">
+
+            <form action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="exampleInputEmail1">{{ form.username.label_tag }}</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="username" autofocus
+                        autocapitalize="none" autocomplete="username" maxlength="150" required id="id_username"
+                        placeholder="Enter name">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">{{ form.password.label_tag }}</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="password"
+                        autocomplete="current-password" required id="id_password" placeholder="Password">
+                </div>
+                <div class="double">
+                    <input class="btn btn-primary" type="submit" value="LOGIN">
+                    <input type="hidden" name="next" value="{{ next }}">
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+
+</div>
+
+
+{% endif %}
+
+{% endblock %}

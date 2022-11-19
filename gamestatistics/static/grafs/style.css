@@ -1,0 +1,77 @@
+body{
+    overflow-x:scroll;
+
+}
+
+.container1{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    
+}
+.blue-color{
+    color: blue;
+}
+
+
+.foo{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    
+    flex-direction: column;
+}
+
+.btn-hight{
+    width: 400px;
+    height: 300px;
+    font-size: 24px;
+}
+
+
+
+.double{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.title{
+    display: inline-block;
+    font-size: 24px;
+}
+
+.for{
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.center{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10vh;
+
+}
+.hidden{
+    visibility: hidden;
+    display: none;
+}
+.dva{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}

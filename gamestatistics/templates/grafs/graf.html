@@ -1,0 +1,300 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+
+{% if user.is_authenticated %}
+<div class="container">
+    <div class="center">
+        <div class="for">
+            <div class="title">
+                <h1>Your name: {{ user.username }}</h1>
+                <div class="dva">
+                    <h2>Вы сейчас на ㅤ</h2> <h1 class="blue-color">   Линейном   </h1>  <h2> ㅤграфе</h2>
+    
+                    </div>
+    
+            </div>
+            <br>
+            <br>
+            <a href="{% url 'logarifm' %}"> <input class="btn btn-primary " type="submit" value="Логарифмические графы"></a>
+        </div>
+        
+    </div>
+
+</div>
+
+{% else %}
+<div class="container1">
+    <a href="{% url 'login' %}"> <input class="btn btn-primary btn-hight" type="submit" value="Вход в систему"></a>
+
+</div>
+
+{% endif %}
+
+
+
+
+
+
+<div class="container1">
+    <div class="center">
+        <div class="title">
+            
+            <h1 id="make_hidden2">Wait a some second please</h1>
+        </div>
+        <div class="loader loader--style1" title="0">
+            <svg id="make_hidden" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="600px" height="640px"
+                viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+                <path opacity="0.2" fill="#761976"
+                    d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946
+              s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634
+              c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z" />
+                <path fill="#196076" d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0
+              C22.32,8.481,24.301,9.057,26.013,10.047z">
+                    <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 20 20"
+                        to="360 20 20" dur="1.5s" repeatCount="indefinite" />
+                </path>
+            </svg>
+        </div>
+    </div>
+
+    <span class="foo" data-delighter>
+        <br><br><br>
+        <canvas style="margin-left: 10px;"  class="child" loading="lazy" id="myChart"></canvas>
+    </span>
+    <span class="foo" data-delighter>
+        <br><br><br>
+        <canvas class="child" loading="lazy" id="all"></canvas>
+    </span>
+    <span class="foo" data-delighter>
+        <br><br><br>
+        <canvas class="child" loading="lazy" id="all"></canvas>
+    </span>
+    <span class="foo" data-delighter>
+        <br><br><br>
+        <canvas class="child" loading="lazy" id="all"></canvas>
+    </span>
+    <span class="foo" data-delighter>
+        <br><br><br>
+        <canvas class="child" loading="lazy" id="all"></canvas>
+    </span>
+    <span class="foo" data-delighter>
+        <br><br><br>
+        <canvas class="child" loading="lazy" id="all"></canvas>
+    </span>
+    <span class="foo" data-delighter>
+        <br><br><br>
+        <canvas class="child" loading="lazy" id="all"></canvas>
+    </span>
+    <span class="foo" data-delighter>
+        <br><br><br>
+        <canvas class="child" loading="lazy" id="all"></canvas>
+    </span>
+    <br>
+    <br><br>
+
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- <script type="text/javascript" src="delighters.js"></script> -->
+
+<script>
+
+
+
+
+    const ctx = document.getElementById('myChart');
+    const ctx1 = document.querySelectorAll('#all');
+    url = 'http://127.0.0.1:8000/get_data/';
+    // первый 
+    fetch(url).then(function (response) {
+        response.json().then(function (data) {
+            console.log(data)
+            let data_counts = []
+
+            for (let j in data.versions) {
+                console.log(data.versions[j])
+                if (data.versions[j] == '2.8.5') {
+                    data_counts.push(data.v_dict_count[data.versions[j]])
+
+                }
+                if (data.versions[j] == '2.8.6') {
+                    data_counts.push(data.v_dict_count[data.versions[j]])
+
+                }
+                if (data.versions[j] == '2.8.7') {
+                    data_counts.push(data.v_dict_count[data.versions[j]])
+
+                }
+                if (data.versions[j] == '2.8.8') {
+                    data_counts.push(data.v_dict_count[data.versions[j]])
+
+                }
+                if (data.versions[j] == '2.8.9') {
+                    data_counts.push(data.v_dict_count[data.versions[j]])
+
+                }
+                if (data.versions[j] == '2.9') {
+                    data_counts.push(data.v_dict_count[data.versions[j]])
+
+                }
+                if (data.versions[j] == '2.9.1') {
+                    data_counts.push(data.v_dict_count[data.versions[j]])
+
+                }
+            }
+
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: data.versions,
+                    datasets: [{
+                        label: "VERSION'S EVENTS",
+                        data: data_counts,
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+            // все остальные
+            for (let j in data.versions) {
+                console.log(data.events_to_version[data.versions[j]])
+                // ключи объекта преобразуем в массив (ES6)
+                let labls = Object.keys(data.events_to_version[data.versions[j]]);
+
+                // значения объекта преобразуем в массив (ES8)
+                let dats = Object.values(data.events_to_version[data.versions[j]]);
+                arrayLabel = labls
+
+                arrayData = dats;
+
+                arrayOfObj = arrayLabel.map(function (d, i) {
+                    return {
+                        label: d,
+                        data: arrayData[i] || 0
+                    };
+                });
+
+                sortedArrayOfObj = arrayOfObj.sort(function (a, b) {
+                    return b.data - a.data;
+                });
+
+                newArrayLabel = [];
+                newArrayData = [];
+                sortedArrayOfObj.forEach(function (d) {
+                    newArrayLabel.push(d.label);
+                    newArrayData.push(d.data);
+
+
+                });
+                let max_100 = newArrayData[0]
+                new_data = []
+                for (let i in newArrayData) {
+                    res = (newArrayData[i] / max_100) * 100
+                    new_data.push(res)
+                }
+                console.log(new_data.length, newArrayLabel.length)
+                new Chart(ctx1[j], {
+                    type: 'line',
+                    data: {
+                        labels: newArrayLabel,
+                        datasets: [{
+                            label: "VERSION'S EVENTS" + "   " + data.versions[j],
+                            data: new_data,
+                            borderWidth: 1,
+                            fill: true,
+
+
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+
+                        scales: {
+
+
+                            y: {
+                                display: true,
+                                // type: 'logarithmic',
+                            },
+                            x: {
+                                display: false,
+                            },
+                            xAxes: {
+                                ticks: {
+                                    minRotation: 1,
+                                    autoskip: false,
+                                    autoSkipPadding: 0,
+                                    font: {
+                                        size: 12,
+                                        lineHeight: 0.5
+                                    }
+                                },
+                                gridLines: {
+                                    drawOnChartArea: false
+                                },
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                labels: {
+                                    // This more specific font property overrides the global property
+                                    font: {
+                                        size: 18,
+                                        lineHeight: 0.2
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                });
+
+            }
+
+        });
+    });
+
+
+    // console.log(my_str, '1', rr)
+    // arr = my_str.split(',')
+    // console.log(arr, typeof(arr))
+
+
+
+    // new Chart(ctx, {
+    //     type: 'bar',
+    //     data: {
+    //         labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    //         datasets: [{
+    //             label: '# of Votes',
+    //             data: [12, 19, 3, 5, 2, 3],
+    //             borderWidth: 1
+    //         }]
+    //     },
+    //     options: {
+    //         scales: {
+    //             y: {
+    //                 beginAtZero: true
+    //             }
+    //         }
+    //     }
+    // });
+
+    setTimeout(function () {
+        let hidden2 = document.getElementById('make_hidden2').style.display = 'none';
+        let hidden = document.getElementById('make_hidden').style.display = 'none';
+    }, 5000);
+</script>
+
+{% endblock %}
