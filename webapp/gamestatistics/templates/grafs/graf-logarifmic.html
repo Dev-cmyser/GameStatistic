@@ -10,16 +10,14 @@
             <div class="title">
                 <h1>Your name: {{ user.username }}</h1>
                 <div class="dva">
-                    <h2>Вы сейчас на ㅤ</h2> <h1 class="blue-color">   Линейном   </h1>  <h2> ㅤграфе</h2>
-    
-                    </div>
-    
+                <h2>Вы сейчас на ㅤ</h2> <h1 class="blue-color">   Логарифмическом   </h1>  <h2> ㅤграфе</h2>
+
+                </div>
             </div>
             <br>
             <br>
-            <a href="{% url 'logarifm' %}"> <input class="btn btn-primary " type="submit" value="Логарифмические графы"></a>
+            <a href="{% url 'graf' %}"> <input class="btn btn-primary " type="submit" value="Линейные графы"></a>
         </div>
-        
     </div>
 
 </div>
@@ -40,7 +38,6 @@
 <div class="container1">
     <div class="center">
         <div class="title">
-            
             <h1 id="make_hidden2">Wait a some second please</h1>
         </div>
         <div class="loader loader--style1" title="0">
@@ -108,7 +105,7 @@
 
     const ctx = document.getElementById('myChart');
     const ctx1 = document.querySelectorAll('#all');
-    url = 'http://127.0.0.1:8000/get_data/';
+    url = 'http://localhost:8000/get_data';
     // первый 
     fetch(url).then(function (response) {
         response.json().then(function (data) {
@@ -225,7 +222,7 @@
 
                             y: {
                                 display: true,
-                                // type: 'logarithmic',
+                                type: 'logarithmic',
                             },
                             x: {
                                 display: false,
@@ -236,7 +233,7 @@
                                     autoskip: false,
                                     autoSkipPadding: 0,
                                     font: {
-                                        size: 12,
+                                        size: 14,
                                         lineHeight: 0.5
                                     }
                                 },

@@ -5,7 +5,7 @@ description = "project for codovstvo"
 authors = ["Dev-cmyser <kirrallt@mail.ru>"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "practic_site_gamestatistic"}]
+packages = [{include = "gamestatistics"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
