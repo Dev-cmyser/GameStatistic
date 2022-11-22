@@ -6,6 +6,8 @@ services:
     restart: always
     ports: 
       - "6379:6379"
+    networks:
+      - back
   
   webapp:
     restart: always
@@ -14,6 +16,8 @@ services:
     ports: 
       - "8000:8000"
     command: [ "python3", "./gamestatistics/manage.py", "runserver", "0.0.0.0:8000"]
+    networks:
+      - back
   
   worker:
     restart: always
@@ -22,6 +26,8 @@ services:
     volumes: 
       - ./data:/app/data/
     command: ['celery', '--workdir=./gamestatistics', '-A', 'gamestatistics', 'worker' ]
+    networks:
+      - back
 
   beat:
     restart: always
@@ -30,3 +36,8 @@ services:
     volumes: 
       - ./data:/app/data/
     command: ['celery', '--workdir=./gamestatistics', '-A', 'gamestatistics', 'beat' ]
+    networks:
+      - back
+    
+networks:
+  back:
