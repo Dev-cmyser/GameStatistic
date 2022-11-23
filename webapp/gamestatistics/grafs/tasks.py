@@ -82,25 +82,25 @@ def _create_all_data() -> None:
             defaults=defaults_versions,
             
         )
-        d_user = d_event['userEntity']
-        defaults_subuser = {
-            'platformUserId' : d_user['platformUserId'] or -1,
-            'sessionCounter' : d_user['sessionCounter']or -1,
-            'playTime' : d_user['playTime'] or -1,
-            'active' : d_user['active'],
-            'lastActivity' : d_user['lastActivity'] or -1,
-            'referer' : d_user['referer'],
-            'registrationDate' : d_user['registrationDate'],
-            'adsCounter' : d_user['adsCounter'] or -1,
-            'platform' : d_user['platform'],
-            'deviseType' : d_user['deviseType'],
-        }
-        obj_user, created_user = SubUser.objects.get_or_create(
-            sub_id = d_user['id'],
-            defaults=defaults_subuser,  
-        )
+#         d_user = d_event['userEntity']
+#         defaults_subuser = {
+#             'platformUserId' : d_user['platformUserId'] or -1,
+#             'sessionCounter' : d_user['sessionCounter']or -1,
+#             'playTime' : d_user['playTime'] or -1,
+#             'active' : d_user['active'],
+#             'lastActivity' : d_user['lastActivity'] or -1,
+#             'referer' : d_user['referer'],
+#             'registrationDate' : d_user['registrationDate'],
+#             'adsCounter' : d_user['adsCounter'] or -1,
+#             'platform' : d_user['platform'],
+#             'deviseType' : d_user['deviseType'],
+#         }
+#         obj_user, created_user = SubUser.objects.get_or_create(
+#             sub_id = d_user['id'],
+#             defaults=defaults_subuser,  
+#         )
         
-        obj_user.event.add(obj_event)
+#         obj_user.event.add(obj_event)
 
 @app.task
 def repeat_order_make():
