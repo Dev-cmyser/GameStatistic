@@ -17,6 +17,7 @@ app.conf.beat_schedule = {
     'every': { 
         'task': 'grafs.tasks.repeat_order_make',
         'schedule': crontab(minute='11', hour='21')   
+              
     }
 
 }
