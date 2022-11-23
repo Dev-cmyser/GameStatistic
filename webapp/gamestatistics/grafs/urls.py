@@ -8,5 +8,5 @@ urlpatterns = [
     path("logout/", auth_views.LogoutView.as_view(), name="logout"),
     path('get_data/', get_data, name="get_data"),
     path('logarifm/', logarifm, name="logarifm"),
-    path('', main_graf, name="graf"),
+    path('line/', main_graf, name="graf"),
 ]
