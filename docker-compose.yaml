@@ -14,8 +14,8 @@ services:
     build: 
       context: ./webapp
     ports: 
-      - "8000:8000"
-    command: [ "python3", "./gamestatistics/manage.py", "runserver", "0.0.0.0:8000"]
+      - "15680:15680"
+    command: [ "python3", "./gamestatistics/manage.py", "runserver", "0.0.0.0:15680"]
     networks:
       - back
   
