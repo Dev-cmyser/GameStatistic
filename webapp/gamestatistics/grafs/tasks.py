@@ -104,7 +104,8 @@ def _create_all_data() -> None:
 
 @app.task
 def repeat_order_make():
-    # _get_all_data()
+    print("получаем данные")
+    _get_all_data()
     print("\n\n\nStarting to  create_all_data!\n\n\n\n\n\n\n\n\n\n")
     _create_all_data()
     print("\n\n\nFinish! to  create_all_data!\n\n\n\n\n\n\n\n\n\n")
