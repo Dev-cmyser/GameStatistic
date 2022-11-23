@@ -14,5 +14,6 @@ RUN poetry config virtualenvs.create false && poetry install
 RUN poetry shell
 
 
-
+CMD [ "python3", "./gamestatistics/manage.py", "makemigrations"]
+CMD [ "python3", "./gamestatistics/manage.py", "migrate"]
 CMD [ "python3", "./gamestatistics/manage.py", "runserver", "0.0.0.0:8000"]
